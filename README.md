@@ -6,7 +6,7 @@ Paste an OpenAPI spec, get a production-ready MCP server in TypeScript. One clic
 
 When I drove the MCP-first mandate at Qualtrics, the biggest bottleneck wasn't buy-in — it was boilerplate. Every team that wanted to expose their API as an MCP tool had to manually write the server scaffolding, map endpoints to MCP tool definitions, and handle the protocol plumbing. It took days per integration. This tool reduces that to seconds: paste your OpenAPI spec, and it generates a complete, deployable MCP server using streaming code generation.
 
-The agentic ecosystem won't scale if every tool integration requires a developer spending a week on protocol boilerplate. This fixes that.
+The agentic ecosystem won't scale if every tool integration requires a developer spending a week on protocol boilerplate. This fixes that. 
 
 ## Key Features
 
