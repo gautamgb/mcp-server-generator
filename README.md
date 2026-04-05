@@ -1,91 +1,50 @@
 # MCP Server Generator
 
-A small Next.js DevEx tool that generates a **TypeScript Model Context Protocol (MCP) server** from an OpenAPI spec. Paste your OpenAPI JSON (or YAML), click Generate, and get streamed TypeScript code you can copy and use.
+Paste an OpenAPI spec, get a production-ready MCP server in TypeScript. One click.
 
-## Features
+## Why This Exists
 
-- Single-page UI: textarea for OpenAPI spec + syntax-highlighted output
-- Streamed generation via OpenAI (gpt-4o-mini)
-- Copy-to-clipboard for the generated code
-- No database or auth — just add `OPENAI_API_KEY` and run
+When I drove the MCP-first mandate at Qualtrics, the biggest bottleneck wasn't buy-in — it was boilerplate. Every team that wanted to expose their API as an MCP tool had to manually write the server scaffolding, map endpoints to MCP tool definitions, and handle the protocol plumbing. It took days per integration. This tool reduces that to seconds: paste your OpenAPI spec, and it generates a complete, deployable MCP server using streaming code generation.
 
-## Setup
+The agentic ecosystem won't scale if every tool integration requires a developer spending a week on protocol boilerplate. This fixes that.
 
-1. Clone the repo and install dependencies:
+## Key Features
 
-   ```bash
-   cd MCP-Server-Generator
-   npm install
-   ```
+- **Single-page interface** — paste OpenAPI spec, get TypeScript MCP server
+- **Streaming code generation** powered by OpenAI (gpt-4o-mini)
+- **Production-ready output** — generated servers follow MCP protocol conventions and are deployment-ready
+- **Copy-to-clipboard** with syntax-highlighted preview
+- **Minimal setup** — one environment variable (`OPENAI_API_KEY`)
 
-2. Copy `.env.example` to `.env.local` and set your OpenAI API key:
+## Getting Started
 
-   ```bash
-   cp .env.example .env.local
-   # Edit .env.local and set OPENAI_API_KEY=sk-...
-   ```
+```bash
+git clone https://github.com/gautamgb/mcp-server-generator.git
+cd MCP-Server-Generator
+npm install
+cp .env.example .env.local  # Add your OPENAI_API_KEY
+npm run dev
+```
 
-3. Run the dev server:
+Open [http://localhost:3000](http://localhost:3000), paste an OpenAPI specification, and generate your MCP server.
 
-   ```bash
-   npm run dev
-   ```
+## Deploy to Vercel
 
-4. Open [http://localhost:3000](http://localhost:3000), paste an OpenAPI spec, and click **Generate MCP Server**.
+1. Push to GitHub
+2. Import in Vercel
+3. Add `OPENAI_API_KEY` to environment variables
+4. Deploy
 
-## Deploy (e.g. Vercel)
+## Tech Stack
 
-- Push to GitHub and import the project in Vercel.
-- Add `OPENAI_API_KEY` in Project Settings → Environment Variables.
-- Deploy; the app will be available at your Vercel URL.
+- **Framework:** Next.js 16 (App Router)
+- **AI:** OpenAI API (streaming)
+- **Styling:** Tailwind CSS
+- **Language:** TypeScript
 
-## Tech
+## Live Demo
 
-- **Next.js 16** (App Router)
-- **OpenAI API** (streaming)
-- **Tailwind CSS**
-- **react-syntax-highlighter** (dark theme)
-
-## Pushing to a different GitHub account
-
-To push this repo from a **different** GitHub account (e.g. a second user or org):
-
-1. **Create the repo on GitHub** under that account (e.g. `other-account/mcp-server-generator`). Do not add a README or .gitignore so the repo is empty.
-
-2. **Commit locally** (if you haven’t yet):
-   ```bash
-   cd MCP-Server-Generator
-   git add -A
-   git config user.email "other-account@example.com"   # email for that account
-   git config user.name "Other Account Name"
-   git commit -m "feat: MCP Server Generator — OpenAPI to TypeScript MCP server with streaming"
-   ```
-
-3. **Add the remote and push** using that account’s credentials:
-
-   - **HTTPS (recommended for second account):**  
-     Use a [Personal Access Token (PAT)](https://github.com/settings/tokens) for the other account as the password:
-     ```bash
-     git remote add origin https://github.com/OTHER_ACCOUNT/mcp-server-generator.git
-     git push -u origin main
-     ```
-     When prompted, use the **other account’s** username and its PAT as the password.
-
-   - **SSH:**  
-     Use an SSH key linked to the other account (e.g. `~/.ssh/id_ed25519_other`) and configure the host in `~/.ssh/config`:
-     ```
-     Host github-other
-       HostName github.com
-       User git
-       IdentityFile ~/.ssh/id_ed25519_other
-     ```
-     Then:
-     ```bash
-     git remote add origin git@github-other:OTHER_ACCOUNT/mcp-server-generator.git
-     git push -u origin main
-     ```
-
-4. **Optional:** To avoid using the wrong account on this repo in the future, leave the local `user.email` and `user.name` set as above (they apply only inside this repo).
+[seekgb.com](https://www.seekgb.com)
 
 ## License
 
